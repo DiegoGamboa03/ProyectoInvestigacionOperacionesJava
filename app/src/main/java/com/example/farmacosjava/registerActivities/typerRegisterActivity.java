@@ -24,7 +24,7 @@ public class typerRegisterActivity extends AppCompatActivity {
         Spinner spinner = (Spinner) findViewById(R.id.spinnerUserType);
         String selectedItem = spinner.getSelectedItem().toString();
 
-        Intent intent = new Intent(this, MainActivity.class);
+        Intent intent = new Intent(this, nameRegisterActivity.class);
 
         intent.putExtra("UserType", selectedItem);
         startActivity(intent);
