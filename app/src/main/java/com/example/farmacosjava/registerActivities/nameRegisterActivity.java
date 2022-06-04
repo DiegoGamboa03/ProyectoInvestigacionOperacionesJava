@@ -11,6 +11,7 @@ import android.widget.Toast;
 import com.example.farmacosjava.MainActivity;
 import com.example.farmacosjava.R;
 import com.example.farmacosjava.registerActivities.PatientActivity.genreActivity;
+import com.example.farmacosjava.registerActivities.doctorActivity.specialityRegisterActivity;
 
 public class nameRegisterActivity extends AppCompatActivity {
 
@@ -28,7 +29,8 @@ public class nameRegisterActivity extends AppCompatActivity {
             intent = new Intent(this, genreActivity.class);
             startActivity(intent);
         } else {//En caso de ser doctor
-
+            intent = new Intent(this, specialityRegisterActivity.class);
+            startActivity(intent);
         }
     }
 }
