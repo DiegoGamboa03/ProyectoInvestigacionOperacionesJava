@@ -2,17 +2,116 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nextButton"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#EFFFFD"
+    app:backgroundTint="@null"
     tools:context=".MainActivity">
 
     <TextView
+        android:id="@+id/circle2"
+        android:layout_width="250dp"
+        android:layout_height="239dp"
+        android:layout_marginTop="48dp"
+        android:layout_marginEnd="92dp"
+        android:background="@drawable/circle"
+        app:layout_constraintEnd_toStartOf="@+id/circle3"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/circle4"
+        android:layout_width="250dp"
+        android:layout_height="239dp"
+        android:layout_marginStart="216dp"
+        android:layout_marginBottom="44dp"
+        android:background="@drawable/circle"
+        app:layout_constraintBottom_toTopOf="@+id/circle3"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <TextView
+        android:id="@+id/circle3"
+        android:layout_width="250dp"
+        android:layout_height="239dp"
+        android:layout_marginStart="236dp"
+        android:background="@drawable/circle"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.662" />
+
+    <TextView
+        android:id="@+id/circle23"
+        android:layout_width="250dp"
+        android:layout_height="239dp"
+        android:layout_marginEnd="284dp"
+        android:background="@drawable/circle"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/circle2" />
+
+    <TextView
+        android:id="@+id/textView_signIn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Hello World!"
+        android:clickable="true"
+        android:focusable="auto"
+        android:minHeight="48dp"
+        android:onClick="clickTextView"
+        android:shadowColor="#42C2FF"
+        android:text="¿No tienes una cuenta?, presiona aqui para crear una"
+        android:textColor="#42C2FF"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.976" />
+
+    <EditText
+        android:id="@+id/editTextUsername"
+        android:layout_width="315dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="348dp"
+        android:background="@drawable/roundstyle"
+        android:ems="10"
+        android:hint="Usuario"
+        android:inputType="textPersonName"
+        app:layout_constraintBottom_toTopOf="@+id/editTextPassword"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.437"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.781" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/buttonNext"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="20dp"
+        android:background="@drawable/roundstylebutton"
+        android:backgroundTint="@color/primaryColor"
+        android:onClick="clickNextButton"
+        android:text="Ingresar"
+        android:textColor="@color/white"
+        app:layout_constraintBottom_toTopOf="@+id/textView_signIn"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.873"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <EditText
+        android:id="@+id/editTextPassword"
+        android:layout_width="315dp"
+        android:layout_height="48dp"
+        android:layout_marginBottom="24dp"
+        android:background="@drawable/roundstyle"
+        android:ems="10"
+        android:hint="Contraseña"
+        android:inputType="textPassword"
+        app:layout_constraintBottom_toTopOf="@+id/buttonNext"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.437"
+        app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
