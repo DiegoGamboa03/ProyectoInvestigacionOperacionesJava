@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.Toast;
 
 import com.example.farmacosjava.registerActivities.typerRegisterActivity;
@@ -26,6 +27,13 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void clickNextButton(View view){
+        EditText editTextUsername = findViewById(R.id.editTextUsername);
+        if(editTextUsername.getText().toString().equals("d")){
+            Intent intent = new Intent(this, DoctorPacientListActivity.class);
+            startActivity(intent);
+        }else{
+
+        }
         Toast.makeText(getApplicationContext(), "Remplazar por tu codigo", Toast.LENGTH_LONG)
                 .show();
     }
