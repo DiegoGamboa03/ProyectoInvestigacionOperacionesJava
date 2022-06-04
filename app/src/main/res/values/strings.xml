@@ -1,3 +1,11 @@
 <resources>
     <string name="app_name">FarmacosJava</string>
+    <string-array name="UserType">
+        <item>Paciente</item>
+        <item>Profesional de la salud</item>
+    </string-array>
+    <string-array name="Genre">
+        <item>Masculino</item>
+        <item>Femenino</item>
+    </string-array>
 </resources>
