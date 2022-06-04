@@ -8,16 +8,16 @@ import android.view.View;
 
 import com.example.farmacosjava.registerActivities.PasswordRegisterActivity;
 
-public class PatientMedicinesDoctorView extends AppCompatActivity {
+public class NewPacient extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_patient_medicines_doctor_view);
+        setContentView(R.layout.activity_new_pacient);
     }
 
-    public void clickFloatingActionButton(View view) {
-        Intent intent = new Intent(this, NewMedicineForPacient.class);
+    public void clickNextButton(View view) {
+        Intent intent = new Intent(this, PasswordRegisterActivity.class);
         startActivity(intent);
     }
 }

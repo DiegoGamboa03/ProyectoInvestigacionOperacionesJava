@@ -10,6 +10,8 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import com.example.farmacosjava.registerActivities.PasswordRegisterActivity;
+
 import java.util.ArrayList;
 
 public class DoctorPacientListActivity extends AppCompatActivity {
@@ -42,5 +44,10 @@ public class DoctorPacientListActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+    }
+
+    public void clickFloatingActionButton(View view) {
+        Intent intent = new Intent(this, NewPacient.class);
+        startActivity(intent);
     }
 }
