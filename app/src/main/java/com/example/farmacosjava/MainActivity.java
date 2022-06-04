@@ -32,7 +32,8 @@ public class MainActivity extends AppCompatActivity {
             Intent intent = new Intent(this, DoctorPacientListActivity.class);
             startActivity(intent);
         }else{
-
+            Intent intent = new Intent(this, PatientMedicinesPatientView.class);
+            startActivity(intent);
         }
         Toast.makeText(getApplicationContext(), "Remplazar por tu codigo", Toast.LENGTH_LONG)
                 .show();

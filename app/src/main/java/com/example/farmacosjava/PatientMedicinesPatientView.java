@@ -9,11 +9,9 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
-import com.example.farmacosjava.registerActivities.PasswordRegisterActivity;
-
 import java.util.ArrayList;
 
-public class PatientMedicinesDoctorView extends AppCompatActivity {
+public class PatientMedicinesPatientView extends AppCompatActivity {
 
     private ListView listview;
     private ArrayList<String> names;
@@ -21,7 +19,7 @@ public class PatientMedicinesDoctorView extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_patient_medicines_doctor_view);
+        setContentView(R.layout.activity_patient_medicines_patient_view);
 
         listview = (ListView) findViewById(R.id.listViewMedicines);
 
@@ -43,10 +41,5 @@ public class PatientMedicinesDoctorView extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-    }
-
-    public void clickFloatingActionButton(View view) {
-        Intent intent = new Intent(this, NewMedicineForPacient.class);
-        startActivity(intent);
     }
 }

@@ -10,6 +10,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.FarmacosJava">
         <activity
+            android:name=".PatientMedicinesPatientView"
+            android:exported="false" />
+        <activity
             android:name=".NewMedicineForPacient"
             android:exported="false" />
         <activity
