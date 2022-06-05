@@ -30,30 +30,45 @@ public class directionRegisterActivity extends AppCompatActivity {
 
     FirebaseFirestore db = FirebaseFirestore.getInstance();
 
-    //Esto va a cambiar por un spinner
-    EditText provincia = findViewById(R.id.editTextProvince);
-    EditText ciudad = findViewById(R.id.editTextCity);
-
     public void clickNextButton(View view) {
-        Map<String,String> data = new HashMap<>();
-        data.put("provincia",provincia.getText().toString());
-        data.put("ciudad",ciudad.getText().toString());
+
+        //Esto va a cambiar por un spinner
+        String provincia = ((EditText) findViewById(R.id.editTextProvince)).getText().toString();
+        String ciudad = ((EditText) findViewById(R.id.editTextCity)).getText().toString();
+
+//        Map<String,String> data = new HashMap<>();
+//        data.put("provincia",provincia.getText().toString());
+//        data.put("ciudad",ciudad.getText().toString());
 
         Intent intent = getIntent();
         String cedula = intent.getStringExtra("cedula");
         String profileType = intent.getStringExtra("UserType");
+        String nombre1 = intent.getStringExtra("nombre1");
+        String nombre2 = intent.getStringExtra("nombre2");
+        String apellido1 = intent.getStringExtra("apellido1");
+        String apellido2 = intent.getStringExtra("apellido2");
+        String genero = intent.getStringExtra("genero");
+        String fecnac = intent.getStringExtra("fecnac");
 
-        db.collection("pacientes").document(cedula).set(data)
-                .addOnFailureListener(new OnFailureListener() {
-                    @Override
-                    public void onFailure(@NonNull Exception e) {
-                        Log.w(TAG, "Error en registro", e);
-                    }
-                });
+//        db.collection("pacientes").document(cedula).set(data)
+//                .addOnFailureListener(new OnFailureListener() {
+//                    @Override
+//                    public void onFailure(@NonNull Exception e) {
+//                        Log.w(TAG, "Error en registro", e);
+//                    }
+//                });
 
-        intent = new Intent(this, specialityRegisterActivity.class);
+        intent = new Intent(this, treatmentPlaceRegisterActivity.class);
         intent.putExtra("cedula",cedula);
         intent.putExtra("UserType",profileType);
+        intent.putExtra("nombre1",nombre1);
+        intent.putExtra("nombre2",nombre2);
+        intent.putExtra("apellido1",apellido1);
+        intent.putExtra("apellido2",apellido2);
+        intent.putExtra("genero",genero);
+        intent.putExtra("fecnac",fecnac);
+        intent.putExtra("provincia",provincia);
+        intent.putExtra("ciudad",ciudad);
         startActivity(intent);
     }
 }

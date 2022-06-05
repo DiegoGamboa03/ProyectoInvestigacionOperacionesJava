@@ -30,7 +30,7 @@ public class PasswordRegisterActivity extends AppCompatActivity {
         setContentView(R.layout.activity_password_register);
     }
 
-    EditText password = findViewById(R.id.editTextSpeciality);
+
 
     public void clickNextButton(View view) {
 
@@ -38,10 +38,26 @@ public class PasswordRegisterActivity extends AppCompatActivity {
         String cedula = intent.getStringExtra("cedula");
         String profileType = intent.getStringExtra("UserType");
 
-        Map<String, String> data = new HashMap<>();
-        data.put("password", password.getText().toString());
+
+        String password = ((EditText) findViewById(R.id.editTextSpeciality)).getText().toString();
+
+//        Map<String, String> data = new HashMap<>();
+//        data.put("password", password.getText().toString());
 
         if (profileType.equals("Paciente")) { //En caso de ser un paciente
+
+            Map<String,String> data = new HashMap<>();
+            data.put("nombre1",intent.getStringExtra("nombre1"));
+            data.put("nombre2",intent.getStringExtra("nombre2"));
+            data.put("apellido1",intent.getStringExtra("apellido1"));
+            data.put("apellido2",intent.getStringExtra("apellido2"));
+            data.put("fecnac",intent.getStringExtra("fecnac"));
+            data.put("genero",intent.getStringExtra("genero"));
+            data.put("lugar_tratamiento",intent.getStringExtra("lugar_tratamiento"));
+            data.put("provincia",intent.getStringExtra("provincia"));
+            data.put("ciudad", intent.getStringExtra("ciudad"));
+            data.put("password",password);
+
             db.collection("pacientes").document(cedula).set(data)
                     .addOnFailureListener(new OnFailureListener() {
                         @Override
@@ -50,11 +66,19 @@ public class PasswordRegisterActivity extends AppCompatActivity {
                         }
                     });
 
-            intent = new Intent(this, genreActivity.class);
-            intent.putExtra("cedula", cedula);
-            intent.putExtra("UserType", profileType);
+            intent = new Intent(this, MainActivity.class);
             startActivity(intent);
         } else {//En caso de ser doctor
+
+            Map<String,String> data = new HashMap<>();
+            data.put("nombre1",intent.getStringExtra("nombre1"));
+            data.put("nombre2",intent.getStringExtra("nombre2"));
+            data.put("apellido1",intent.getStringExtra("apellido1"));
+            data.put("apellido2",intent.getStringExtra("apellido2"));
+            data.put("area",intent.getStringExtra("area"));
+            data.put("institucion",intent.getStringExtra("institucion"));
+            data.put("password",password);
+
             db.collection("profesionales").document(cedula).set(data)
                     .addOnFailureListener(new OnFailureListener() {
                         @Override

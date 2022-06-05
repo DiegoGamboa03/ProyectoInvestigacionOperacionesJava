@@ -11,8 +11,11 @@ import android.widget.Toast;
 
 import com.example.farmacosjava.MainActivity;
 import com.example.farmacosjava.R;
+import com.google.firebase.firestore.FirebaseFirestore;
 
 public class typerRegisterActivity extends AppCompatActivity {
+
+    FirebaseFirestore db = FirebaseFirestore.getInstance();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

@@ -29,47 +29,38 @@ public class nameRegisterActivity extends AppCompatActivity {
         setContentView(R.layout.activity_name_register);
     }
 
-    EditText cedula = findViewById(R.id.editTextName);
-    EditText nombre1 = findViewById(R.id.editTextName2);
-    EditText nombre2 = findViewById(R.id.editTextSecondText);
-    EditText apellido1 = findViewById(R.id.editTextLastName);
-    EditText apellido2 = findViewById(R.id.editTextSecondSurname);
-
     public void clickNextButton(View view) {
+        String cedula = ((EditText) findViewById(R.id.editTextName)).getText().toString();
+        String nombre1 = ((EditText) findViewById(R.id.editTextName2)).getText().toString();
+        String nombre2 = ((EditText) findViewById(R.id.editTextSecondText)).getText().toString();
+        String apellido1 = ((EditText) findViewById(R.id.editTextLastName)).getText().toString();
+        String apellido2 = ((EditText) findViewById(R.id.editTextSecondSurname)).getText().toString();
 
-        Map<String,String> data = new HashMap<>();
-        data.put("nombre1",nombre1.getText().toString());
-        data.put("nombre2",nombre2.getText().toString());
-        data.put("apellido1",apellido1.getText().toString());
-        data.put("apellido2",apellido2.getText().toString());
+//        Map<String,String> data = new HashMap<>();
+//        data.put("nombre1",nombre1);
+//        data.put("nombre2",nombre2);
+//        data.put("apellido1",apellido1);
+//        data.put("apellido2",apellido2);
 
         Intent intent = getIntent();
         String profileType = intent.getStringExtra("UserType");
         if (profileType.equals("Paciente")) { //En caso de ser un paciente
-            db.collection("pacientes").document(cedula.getText().toString()).set(data)
-                    .addOnFailureListener(new OnFailureListener() {
-                        @Override
-                        public void onFailure(@NonNull Exception e) {
-                            Log.w(TAG, "Error en registro", e);
-                        }
-                    });
-
             intent = new Intent(this, genreActivity.class);
-            intent.putExtra("cedula",cedula.getText().toString());
+            intent.putExtra("cedula",cedula);
             intent.putExtra("UserType",profileType);
+            intent.putExtra("nombre1",nombre1);
+            intent.putExtra("nombre2",nombre2);
+            intent.putExtra("apellido1",apellido1);
+            intent.putExtra("apellido2",apellido2);
             startActivity(intent);
         } else {//En caso de ser doctor
-            db.collection("profesionales").document(cedula.getText().toString()).set(data)
-                    .addOnFailureListener(new OnFailureListener() {
-                        @Override
-                        public void onFailure(@NonNull Exception e) {
-                            Log.w(TAG, "Error en registro", e);
-                        }
-                    });
-
             intent = new Intent(this, specialityRegisterActivity.class);
-            intent.putExtra("cedula",cedula.getText().toString());
+            intent.putExtra("cedula",cedula);
             intent.putExtra("UserType",profileType);
+            intent.putExtra("nombre1",nombre1);
+            intent.putExtra("nombre2",nombre2);
+            intent.putExtra("apellido1",apellido1);
+            intent.putExtra("apellido2",apellido2);
             startActivity(intent);
         }
     }

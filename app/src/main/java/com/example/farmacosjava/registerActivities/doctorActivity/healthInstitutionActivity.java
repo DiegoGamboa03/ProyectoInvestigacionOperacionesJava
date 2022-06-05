@@ -29,28 +29,39 @@ public class healthInstitutionActivity extends AppCompatActivity {
         setContentView(R.layout.activity_health_institution);
     }
 
-    EditText institucion = findViewById(R.id.editTextHealthInstitution);
-
     public void clickNextButton(View view) {
 
-        Map<String, String> data = new HashMap<>();
-        data.put("institucion", institucion.getText().toString());
+        String institucion = ((EditText) findViewById(R.id.editTextHealthInstitution)).getText().toString();
+
+//        Map<String, String> data = new HashMap<>();
+//        data.put("institucion", institucion.getText().toString());
 
         Intent intent = getIntent();
         String cedula = intent.getStringExtra("cedula");
         String profileType = intent.getStringExtra("UserType");
+        String nombre1 = intent.getStringExtra("nombre1");
+        String nombre2 = intent.getStringExtra("nombre2");
+        String apellido1 = intent.getStringExtra("apellido1");
+        String apellido2 = intent.getStringExtra("apellido2");
+        String area = intent.getStringExtra("area");
 
-        db.collection("profesionales").document(cedula).set(data)
-                .addOnFailureListener(new OnFailureListener() {
-                    @Override
-                    public void onFailure(@NonNull Exception e) {
-                        Log.w(TAG, "Error en registro", e);
-                    }
-                });
+//        db.collection("profesionales").document(cedula).set(data)
+//                .addOnFailureListener(new OnFailureListener() {
+//                    @Override
+//                    public void onFailure(@NonNull Exception e) {
+//                        Log.w(TAG, "Error en registro", e);
+//                    }
+//                });
 
-        intent = new Intent(this, healthInstitutionActivity.class);
+        intent = new Intent(this, PasswordRegisterActivity.class);
         intent.putExtra("cedula",cedula);
         intent.putExtra("UserType",profileType);
+        intent.putExtra("nombre1",nombre1);
+        intent.putExtra("nombre2",nombre2);
+        intent.putExtra("apellido1",apellido1);
+        intent.putExtra("apellido2",apellido2);
+        intent.putExtra("area",area);
+        intent.putExtra("institucion",institucion);
         startActivity(intent);
     }
 }
