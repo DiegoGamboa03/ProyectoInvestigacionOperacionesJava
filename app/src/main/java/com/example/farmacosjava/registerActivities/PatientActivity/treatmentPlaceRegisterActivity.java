@@ -9,7 +9,9 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.EditText;
+import android.widget.Spinner;
 
 import com.example.farmacosjava.R;
 import com.example.farmacosjava.registerActivities.PasswordRegisterActivity;
@@ -29,11 +31,18 @@ public class treatmentPlaceRegisterActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_treatment_place_register);
+
+        Spinner spinnerDirection =  (Spinner) findViewById(R.id.spinnerTreatmentPlace);
+        String[] array = {"Seleccione","1","2","3","4","5","6","7"};
+
+        spinnerDirection.setAdapter(new ArrayAdapter<String>(treatmentPlaceRegisterActivity.this, android.R.layout.simple_spinner_dropdown_item,array));
+
     }
 
     public void clickNextButton(View view) {
 
-        String lugar_tratamiento = ((EditText) findViewById(R.id.editTextTextPersonName)).getText().toString();
+        Spinner spinner =  (Spinner) findViewById(R.id.spinnerTreatmentPlace);
+        String lugar_tratamiento = spinner.toString();
 
 //        Map<String,String> data = new HashMap<>();
 //        data.put("lugar_tratamiento",lugar_tratamiento.getText().toString());

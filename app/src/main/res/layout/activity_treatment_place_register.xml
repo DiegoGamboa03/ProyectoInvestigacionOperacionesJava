@@ -7,6 +7,17 @@
     android:background="#EFFFFD"
     tools:context=".registerActivities.PatientActivity.treatmentPlaceRegisterActivity">
 
+    <Spinner
+        android:id="@+id/spinnerTreatmentPlace"
+        android:layout_width="335dp"
+        android:layout_height="59dp"
+        android:layout_marginBottom="112dp"
+        android:background="@drawable/roundstyle"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.381"
+        app:layout_constraintStart_toStartOf="parent" />
+
     <TextView
         android:id="@+id/circle20"
         android:layout_width="265dp"
@@ -73,19 +84,4 @@
         app:layout_constraintHorizontal_bias="0.882"
         app:layout_constraintStart_toStartOf="parent" />
 
-    <EditText
-        android:id="@+id/editTextTextPersonName"
-        android:layout_width="292dp"
-        android:layout_height="48dp"
-        android:layout_marginBottom="40dp"
-        android:background="@drawable/roundstyle"
-        android:ems="10"
-        android:hint="Nombre del hospital"
-        android:inputType="textPersonName"
-        app:layout_constraintBottom_toTopOf="@+id/buttonNext"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.495"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textViewHospitalPlace"
-        app:layout_constraintVertical_bias="1.0" />
 </androidx.constraintlayout.widget.ConstraintLayout>

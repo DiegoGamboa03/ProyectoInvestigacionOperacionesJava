@@ -7,6 +7,16 @@
     android:background="#EFFFFD"
     tools:context=".registerActivities.doctorActivity.specialityRegisterActivity">
 
+    <Spinner
+        android:id="@+id/spinnerSpecialtity"
+        android:layout_width="335dp"
+        android:layout_height="59dp"
+        android:layout_marginBottom="120dp"
+        android:background="@drawable/roundstyle"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
     <TextView
         android:id="@+id/textViewSpeciality"
         android:layout_width="215dp"
@@ -21,22 +31,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.068" />
-
-    <EditText
-        android:id="@+id/editTextSpeciality"
-        android:layout_width="292dp"
-        android:layout_height="48dp"
-        android:layout_marginBottom="52dp"
-        android:background="@drawable/roundstyle"
-        android:ems="10"
-        android:hint="Area de especialidad"
-        android:inputType="textPersonName"
-        app:layout_constraintBottom_toTopOf="@+id/buttonNext"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.495"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textViewSpeciality"
-        app:layout_constraintVertical_bias="1.0" />
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/buttonNext"

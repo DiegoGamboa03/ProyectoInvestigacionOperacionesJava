@@ -9,7 +9,9 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.EditText;
+import android.widget.Spinner;
 
 import com.example.farmacosjava.R;
 import com.example.farmacosjava.registerActivities.doctorActivity.specialityRegisterActivity;
@@ -26,15 +28,21 @@ public class directionRegisterActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_direction_register);
+
+        Spinner spinnerDirection =  (Spinner) findViewById(R.id.spinnerDirection);
+        String[] array = {"Seleccione","1","2","3","4","5","6","7"};
+
+        spinnerDirection.setAdapter(new ArrayAdapter<String>(directionRegisterActivity.this, android.R.layout.simple_spinner_dropdown_item,array));
     }
 
     FirebaseFirestore db = FirebaseFirestore.getInstance();
 
     public void clickNextButton(View view) {
 
-        //Esto va a cambiar por un spinner
-        String provincia = ((EditText) findViewById(R.id.editTextProvince)).getText().toString();
-        String ciudad = ((EditText) findViewById(R.id.editTextCity)).getText().toString();
+
+        //Agregar logica para que divida la ciudad y la provincia
+        String provincia = "Provincia";
+        String ciudad = "Ciudad";
 
 //        Map<String,String> data = new HashMap<>();
 //        data.put("provincia",provincia.getText().toString());

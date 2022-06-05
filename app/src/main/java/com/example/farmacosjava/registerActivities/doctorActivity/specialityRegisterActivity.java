@@ -9,10 +9,13 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.EditText;
+import android.widget.Spinner;
 
 import com.example.farmacosjava.MainActivity;
 import com.example.farmacosjava.R;
+import com.example.farmacosjava.registerActivities.PatientActivity.directionRegisterActivity;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.firebase.firestore.FirebaseFirestore;
 
@@ -27,11 +30,18 @@ public class specialityRegisterActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_speciality_register);
+
+        Spinner spinner =  (Spinner) findViewById(R.id.spinnerSpecialtity);
+        String[] array = {"Seleccione","1","2","3","4","5","6","7"};
+
+        spinner.setAdapter(new ArrayAdapter<String>(specialityRegisterActivity.this, android.R.layout.simple_spinner_dropdown_item,array));
+
     }
 
     public void clickNextButton(View view) {
 
-        String area = ((EditText) findViewById(R.id.editTextSpeciality)).getText().toString();
+        Spinner spinner =  (Spinner) findViewById(R.id.spinnerSpecialtity);
+        String area = spinner.toString();
 
 //        Map<String, String> data = new HashMap<>();
 //        data.put("area", area.getText().toString());

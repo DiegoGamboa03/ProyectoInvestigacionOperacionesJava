@@ -46,31 +46,16 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.069" />
 
-    <EditText
-        android:id="@+id/editTextProvince"
+    <Spinner
+        android:id="@+id/spinnerDirection"
         android:layout_width="335dp"
         android:layout_height="59dp"
-        android:layout_marginBottom="32dp"
+        android:layout_marginBottom="196dp"
         android:background="@drawable/roundstyle"
-        android:ems="10"
-        android:hint="Provincia"
-        android:inputType="textPersonName"
-        app:layout_constraintBottom_toTopOf="@+id/editTextCity"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
-    <EditText
-        android:id="@+id/editTextCity"
-        android:layout_width="335dp"
-        android:layout_height="59dp"
-        android:layout_marginBottom="24dp"
-        android:background="@drawable/roundstyle"
-        android:ems="10"
-        android:hint="Ciudad"
-        android:inputType="textPersonName"
-        app:layout_constraintBottom_toTopOf="@+id/buttonNext"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/buttonNext"
