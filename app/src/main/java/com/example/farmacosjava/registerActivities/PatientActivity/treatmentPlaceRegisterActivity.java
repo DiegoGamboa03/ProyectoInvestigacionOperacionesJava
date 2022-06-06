@@ -17,9 +17,18 @@ import com.example.farmacosjava.R;
 import com.example.farmacosjava.registerActivities.PasswordRegisterActivity;
 import com.example.farmacosjava.registerActivities.doctorActivity.specialityRegisterActivity;
 import com.example.farmacosjava.registerActivities.typerRegisterActivity;
+import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.firestore.CollectionReference;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
+import com.google.firebase.firestore.QuerySnapshot;
 
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -31,6 +40,30 @@ public class treatmentPlaceRegisterActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_treatment_place_register);
+
+        String estadociudad = getIntent().getStringExtra("estadociudad");
+
+        DocumentReference opciones = db.collection("estado-ciudad").document(estadociudad);
+        CollectionReference op2;
+
+        ArrayList<String> lugares = new ArrayList<String>();
+
+        opciones.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                if (task.isSuccessful()) {
+                    DocumentSnapshot document = task.getResult();
+                    if (document.exists()) {
+                        Log.d(TAG, "DocumentSnapshot data: " + document.getData());
+                    } else {
+                        Log.d(TAG, "No such document");
+                    }
+                } else {
+                    Log.d(TAG, "get failed with ", task.getException());
+                }
+            }
+        });
+
 
         Spinner spinnerDirection =  (Spinner) findViewById(R.id.spinnerTreatmentPlace);
         String[] array = {"Seleccione","1","2","3","4","5","6","7"};
