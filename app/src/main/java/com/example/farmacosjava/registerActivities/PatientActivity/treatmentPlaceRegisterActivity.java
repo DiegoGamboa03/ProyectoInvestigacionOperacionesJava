@@ -44,17 +44,17 @@ public class treatmentPlaceRegisterActivity extends AppCompatActivity {
         String estadociudad = getIntent().getStringExtra("estadociudad");
 
         DocumentReference opciones = db.collection("estado-ciudad").document(estadociudad);
-        CollectionReference op2;
 
-        ArrayList<String> lugares = new ArrayList<String>();
+        ArrayList<String> hospitales = new ArrayList<String>();
 
-        opciones.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+        DocumentReference docRef = db.collection("estado-ciudad").document(estadociudad);
+        docRef.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
             @Override
             public void onComplete(@NonNull Task<DocumentSnapshot> task) {
                 if (task.isSuccessful()) {
                     DocumentSnapshot document = task.getResult();
                     if (document.exists()) {
-                        Log.d(TAG, "DocumentSnapshot data: " + document.getData());
+                        System.out.println("DocumentSnapshot data: " + document.getData());
                     } else {
                         Log.d(TAG, "No such document");
                     }
@@ -64,11 +64,39 @@ public class treatmentPlaceRegisterActivity extends AppCompatActivity {
             }
         });
 
+//        opciones.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+//            @Override
+//            public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+//                if (task.isSuccessful()) {
+//                    DocumentSnapshot document = task.getResult();
+//                    if (document.exists()) {
+//                        CollectionReference lugar = (CollectionReference) (document.getData()).get("hospitales");
+//                        lugar.document("hospitales").get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+//                            @Override
+//                            public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+//                                if(task.isSuccessful()){
+//                                    for (DocumentSnapshot document : task.getResult())
+//                                    if (document.exists()) {
+//                                        hospitales.add(document.getId());
+//                                    }
+//                                }
+//                            }
+//                        });
+//                    } else {
+//                        Log.d(TAG, "No such document");
+//                    }
+//                } else {
+//                    Log.d(TAG, "get failed with ", task.getException());
+//                }
+//            }
+//        });
+
 
         Spinner spinnerDirection =  (Spinner) findViewById(R.id.spinnerTreatmentPlace);
         String[] array = {"Seleccione","1","2","3","4","5","6","7"};
 
-        spinnerDirection.setAdapter(new ArrayAdapter<String>(treatmentPlaceRegisterActivity.this, android.R.layout.simple_spinner_dropdown_item,array));
+        spinnerDirection.setAdapter(new ArrayAdapter<String>(treatmentPlaceRegisterActivity.this,
+                android.R.layout.simple_spinner_dropdown_item,hospitales));
 
     }
 
@@ -89,8 +117,7 @@ public class treatmentPlaceRegisterActivity extends AppCompatActivity {
         String apellido2 = intent.getStringExtra("apellido2");
         String genero = intent.getStringExtra("genero");
         String fecnac = intent.getStringExtra("fecnac");
-        String provincia = intent.getStringExtra("provincia");
-        String ciudad = intent.getStringExtra("ciudad");
+        String estadociudad = intent.getStringExtra("estadociudad");
 
 //        db.collection("pacientes").document(cedula).set(data)
 //                .addOnFailureListener(new OnFailureListener() {
@@ -108,8 +135,7 @@ public class treatmentPlaceRegisterActivity extends AppCompatActivity {
         intent.putExtra("apellido2",apellido2);
         intent.putExtra("genero",genero);
         intent.putExtra("fecnac",fecnac);
-        intent.putExtra("provincia",provincia);
-        intent.putExtra("ciudad",ciudad);
+        intent.putExtra("ciudad",estadociudad);
         intent.putExtra("lugar_tratamiento",lugar_tratamiento);
         startActivity(intent);
     }

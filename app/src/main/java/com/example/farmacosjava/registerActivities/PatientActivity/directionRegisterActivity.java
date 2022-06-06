@@ -34,14 +34,14 @@ public class directionRegisterActivity extends AppCompatActivity {
 
     FirebaseFirestore db = FirebaseFirestore.getInstance();
 
+    ArrayList<String> lugares = new ArrayList<String>();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_direction_register);
 
         CollectionReference opciones = db.collection("estado-ciudad");
-
-        ArrayList<String> lugares = new ArrayList<String>();
 
         opciones.get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
                     @Override
@@ -53,17 +53,19 @@ public class directionRegisterActivity extends AppCompatActivity {
 //                                myListOfDocuments = document.getId();
 //                                System.out.println(document.getId() + " => " + document.getData());
                             }
+                            Spinner spinnerDirection =  (Spinner) findViewById(R.id.spinnerDirection);
+                            spinnerDirection.setAdapter(new ArrayAdapter<String>(directionRegisterActivity.this, android.R.layout.simple_spinner_dropdown_item,lugares));
                         } else {
                             Log.d(TAG, "Error getting documents: ", task.getException());
                         }
                     }
                 });
-
-        Spinner spinnerDirection =  (Spinner) findViewById(R.id.spinnerDirection);
-        spinnerDirection.setAdapter(new ArrayAdapter<String>(directionRegisterActivity.this, android.R.layout.simple_spinner_dropdown_item,lugares));
     }
 
     public void clickNextButton(View view) {
+
+        System.out.println("tamano del arraylist -> " + lugares.size());
+        System.out.println("lugar seleccionado " + ((Spinner) findViewById(R.id.spinnerDirection)).getSelectedItem());
 
 
         //Agregar logica para que divida la ciudad y la provincia

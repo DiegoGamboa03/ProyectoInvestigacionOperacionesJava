@@ -16,9 +16,15 @@ import android.widget.Spinner;
 import com.example.farmacosjava.MainActivity;
 import com.example.farmacosjava.R;
 import com.example.farmacosjava.registerActivities.PatientActivity.directionRegisterActivity;
+import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
+import com.google.firebase.firestore.QuerySnapshot;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -31,17 +37,30 @@ public class specialityRegisterActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_speciality_register);
 
-        Spinner spinner =  (Spinner) findViewById(R.id.spinnerSpecialtity);
-        String[] array = {"Seleccione","1","2","3","4","5","6","7"};
+        CollectionReference areas = db.collection("especialidades");
 
-        spinner.setAdapter(new ArrayAdapter<String>(specialityRegisterActivity.this, android.R.layout.simple_spinner_dropdown_item,array));
+        ArrayList<String> lista = new ArrayList<String>();
 
+        areas.get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                if (task.isSuccessful()) {
+                    for (QueryDocumentSnapshot document : task.getResult()) {
+                        System.out.println(document.getId() + " => " + document.getData());
+                        lista.add(document.getId());
+                    }
+                    Spinner spinner =  (Spinner) findViewById(R.id.spinnerSpecialtity);
+                    spinner.setAdapter(new ArrayAdapter<String>(specialityRegisterActivity.this, android.R.layout.simple_spinner_dropdown_item,lista));
+                } else {
+                    Log.d(TAG, "Error getting documents: ", task.getException());
+                }
+            }
+        });
     }
 
     public void clickNextButton(View view) {
 
-        Spinner spinner =  (Spinner) findViewById(R.id.spinnerSpecialtity);
-        String area = spinner.toString();
+        String area =  ((Spinner) findViewById(R.id.spinnerSpecialtity)).getSelectedItem().toString();
 
 //        Map<String, String> data = new HashMap<>();
 //        data.put("area", area.getText().toString());
