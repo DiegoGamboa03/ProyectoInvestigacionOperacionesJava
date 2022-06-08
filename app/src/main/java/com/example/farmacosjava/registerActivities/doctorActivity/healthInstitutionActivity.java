@@ -16,9 +16,18 @@ import android.widget.Spinner;
 import com.example.farmacosjava.R;
 import com.example.farmacosjava.registerActivities.PasswordRegisterActivity;
 import com.example.farmacosjava.registerActivities.PatientActivity.directionRegisterActivity;
+import com.example.farmacosjava.registerActivities.PatientActivity.treatmentPlaceRegisterActivity;
+import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.firestore.CollectionReference;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
+import com.google.firebase.firestore.QuerySnapshot;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -31,12 +40,44 @@ public class healthInstitutionActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_health_institution);
 
-        Spinner spinnerDirection =  (Spinner) findViewById(R.id.spinnerHealthInstitution);
-        String[] array = {"Seleccione","1","2","3","4","5","6","7"};
+        ArrayList<String> hospitales = new ArrayList<String>();
 
-        spinnerDirection.setAdapter(new ArrayAdapter<String>(healthInstitutionActivity.this, android.R.layout.simple_spinner_dropdown_item,array));
+        CollectionReference docRef = db.collection("estado-ciudad");
+        docRef.get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                if (task.isSuccessful()) {
+                    for (DocumentSnapshot document : task.getResult()) {
+                        docRef.document(document.getId()).collection("hospitales").get()
+                                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                                    @Override
+                                    public void onComplete(@NonNull Task<QuerySnapshot> task2) {
+                                        if (task2.isSuccessful()) {
+                                            for (QueryDocumentSnapshot doc2 : task2.getResult()) {
+                                                hospitales.add(doc2.getId());
+                                            }
 
+                                        }
+                                    }
+                                });
+//                        System.out.println(document.getId() + " => " + document.getData());
+//                        lugares.add(document.getId());
+//                                myListOfDocuments = document.getId();
+//                                System.out.println(document.getId() + " => " + document.getData());
+                    }
+                    Spinner spinnerHealthInstitution =  (Spinner) findViewById(R.id.spinnerHealthInstitution);
+                    spinnerHealthInstitution.setAdapter(new ArrayAdapter<String>(healthInstitutionActivity.this, android.R.layout.simple_spinner_dropdown_item,hospitales));
+                } else {
+                    Log.d(TAG, "Error getting documents: ", task.getException());
+                }
+            }
+        });
     }
+
+//        Spinner spinnerHealth =  (Spinner) findViewById(R.id.spinnerHealthInstitution);
+//        String[] array = {"Seleccione","1","2","3","4","5","6","7"};
+
+//        spinnerHealth.setAdapter(new ArrayAdapter<String>(healthInstitutionActivity.this, android.R.layout.simple_spinner_dropdown_item,array));
 
     public void clickNextButton(View view) {
 

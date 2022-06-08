@@ -115,8 +115,8 @@ public class NewMedicineForPacient extends AppCompatActivity {
         String medtime = ((EditText) findViewById(R.id.editTextMedicationTime)).getText().toString();
 
         Intent intent = getIntent();
-        String cedula_prof = intent.getStringExtra("cedula_prof");
-        String cedula_pac = intent.getStringExtra("cedula_pac");
+//        String cedula_prof = intent.getStringExtra("cedula_prof");
+        String cedula_pac = intent.getStringExtra("paciente");
 
         Map<String,String> data = new HashMap<>();
         data.put("dosis",dose);
@@ -125,9 +125,10 @@ public class NewMedicineForPacient extends AppCompatActivity {
         data.put("duracion",duration);
         data.put("tiempo medicacion",medtime);
 
-        String pk = cedula_prof+"-"+cedula_pac+"-"+med;
+//        String pk = cedula_prof+"-"+cedula_pac+"-"+med;
 
-        db.collection("meds_pacientes_profesional").document(pk).set(data)
+        db.collection("pacientes").document(cedula_pac)
+                .collection("medicamentosRegistrados").document(med).set(data)
                 .addOnFailureListener(new OnFailureListener() {
                     @Override
                     public void onFailure(@NonNull Exception e) {

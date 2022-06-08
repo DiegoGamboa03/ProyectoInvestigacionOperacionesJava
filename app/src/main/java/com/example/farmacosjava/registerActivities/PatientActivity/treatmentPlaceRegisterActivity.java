@@ -43,8 +43,6 @@ public class treatmentPlaceRegisterActivity extends AppCompatActivity {
 
         String estadociudad = getIntent().getStringExtra("estadociudad");
 
-        DocumentReference opciones = db.collection("estado-ciudad").document(estadociudad);
-
         ArrayList<String> hospitales = new ArrayList<String>();
 
         DocumentReference docRef = db.collection("estado-ciudad").document(estadociudad);
@@ -54,7 +52,21 @@ public class treatmentPlaceRegisterActivity extends AppCompatActivity {
                 if (task.isSuccessful()) {
                     DocumentSnapshot document = task.getResult();
                     if (document.exists()) {
-                        System.out.println("DocumentSnapshot data: " + document.getData());
+                        docRef.collection("hospitales").get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                            @Override
+                            public void onComplete(@NonNull Task<QuerySnapshot> task2) {
+                                if (task2.isSuccessful()){
+                                        for (QueryDocumentSnapshot doc2 : task2.getResult()){
+                                            hospitales.add(doc2.getId());
+                                        }
+                                        Spinner spinnerTreatment =  (Spinner) findViewById(R.id.spinnerTreatmentPlace);
+                                        spinnerTreatment.setAdapter(new ArrayAdapter<String>(treatmentPlaceRegisterActivity.this,
+                                                android.R.layout.simple_spinner_dropdown_item,hospitales));
+                                    }
+                                }
+
+                        });
+//                        System.out.println("DocumentSnapshot data: " + document.getData());
                     } else {
                         Log.d(TAG, "No such document");
                     }

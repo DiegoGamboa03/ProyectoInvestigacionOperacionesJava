@@ -1,17 +1,31 @@
 package com.example.farmacosjava;
 
+import static android.content.ContentValues.TAG;
+
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
+import com.google.firebase.firestore.QuerySnapshot;
+
 import java.util.ArrayList;
 
 public class PatientMedicinesPatientView extends AppCompatActivity {
+
+    FirebaseFirestore db = FirebaseFirestore.getInstance();
 
     private ListView listview;
     private ArrayList<String> names;
@@ -20,6 +34,10 @@ public class PatientMedicinesPatientView extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_patient_medicines_patient_view);
+
+        Intent intent = getIntent();
+        String paciente = intent.getStringExtra("paciente");
+
 
         listview = (ListView) findViewById(R.id.listViewMedicines);
 
@@ -30,16 +48,67 @@ public class PatientMedicinesPatientView extends AppCompatActivity {
         names.add("Medicina 4");
         names.add("Medicina 5");
 
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, names);
+        ArrayList<String> meds = new ArrayList<String>();
 
-        listview.setAdapter(adapter);
-
-        listview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        DocumentReference docRef = db.collection("pacientes").document(paciente);
+        docRef.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
             @Override
-            public void onItemClick(AdapterView<?> adapterView, View view, int position, long id) {
-                Intent intent = new Intent(getApplicationContext(), PatientMedicinesDoctorView.class);
-                startActivity(intent);
+            public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                if (task.isSuccessful()) {
+                    DocumentSnapshot document = task.getResult();
+                    if (document.exists()) {
+                        docRef.collection("meds").get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                            @Override
+                            public void onComplete(@NonNull Task<QuerySnapshot> task2) {
+                                if (task2.isSuccessful()){
+                                    for (QueryDocumentSnapshot doc2 : task2.getResult()){
+                                        meds.add(doc2.getId());
+                                    }
+                                    ArrayAdapter<String> adapter = new ArrayAdapter<String>(PatientMedicinesPatientView.this,
+                                            android.R.layout.simple_list_item_1, meds);
+
+                                    listview.setAdapter(adapter);
+
+                                    listview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                                        @Override
+                                        public void onItemClick(AdapterView<?> adapterView, View view, int position, long id) {
+                                            Intent intent = getIntent();
+                                            String username = intent.getStringExtra("username");
+                                            String paciente = intent.getStringExtra("paciente");
+                                            String med = adapter.getItem(position);
+
+                                            intent = new Intent(getApplicationContext(), PatientMedicinesDoctorView.class);
+                                            intent.putExtra("username",username);
+                                            intent.putExtra("paciente",paciente);
+                                            intent.putExtra("med",med);
+                                            startActivity(intent);
+                                        }
+                                    });
+                                }
+                            }
+
+                        });
+//                        System.out.println("DocumentSnapshot data: " + document.getData());
+                    } else {
+                        Log.d(TAG, "No such document");
+                    }
+                } else {
+                    Log.d(TAG, "get failed with ", task.getException());
+                }
             }
         });
+//    }
+//
+//        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, names);
+//
+//        listview.setAdapter(adapter);
+//
+//        listview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+//            @Override
+//            public void onItemClick(AdapterView<?> adapterView, View view, int position, long id) {
+//                Intent intent = new Intent(getApplicationContext(), PatientMedicinesDoctorView.class);
+//                startActivity(intent);
+//            }
+//        });
     }
 }

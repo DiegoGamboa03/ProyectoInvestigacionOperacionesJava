@@ -67,8 +67,6 @@ public class directionRegisterActivity extends AppCompatActivity {
         System.out.println("tamano del arraylist -> " + lugares.size());
         System.out.println("lugar seleccionado " + ((Spinner) findViewById(R.id.spinnerDirection)).getSelectedItem());
 
-
-        //Agregar logica para que divida la ciudad y la provincia
         String estadociudad = ((Spinner) findViewById(R.id.spinnerDirection)).getSelectedItem().toString();
 
 
