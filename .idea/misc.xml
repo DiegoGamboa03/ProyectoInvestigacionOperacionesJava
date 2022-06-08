@@ -3,8 +3,19 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/AndroidStudioProjects/ProyectoInvestigacionOperacionesJava/app/src/main/res/layout/activity_birthdate_register.xml" value="0.17708333333333334" />
+        <entry key="..\:/AndroidStudioProjects/ProyectoInvestigacionOperacionesJava/app/src/main/res/layout/activity_direction_register.xml" value="0.24547101449275363" />
+        <entry key="..\:/AndroidStudioProjects/ProyectoInvestigacionOperacionesJava/app/src/main/res/layout/activity_genre.xml" value="0.24547101449275363" />
+        <entry key="..\:/AndroidStudioProjects/ProyectoInvestigacionOperacionesJava/app/src/main/res/layout/activity_health_institution.xml" value="0.24547101449275363" />
+        <entry key="..\:/AndroidStudioProjects/ProyectoInvestigacionOperacionesJava/app/src/main/res/layout/activity_name_register.xml" value="0.17708333333333334" />
+        <entry key="..\:/AndroidStudioProjects/ProyectoInvestigacionOperacionesJava/app/src/main/res/layout/activity_new_medicine_for_pacient.xml" value="0.264" />
+        <entry key="..\:/AndroidStudioProjects/ProyectoInvestigacionOperacionesJava/app/src/main/res/layout/activity_new_pacient.xml" value="0.24547101449275363" />
+        <entry key="..\:/AndroidStudioProjects/ProyectoInvestigacionOperacionesJava/app/src/main/res/layout/activity_password_register.xml" value="0.24547101449275363" />
+        <entry key="..\:/AndroidStudioProjects/ProyectoInvestigacionOperacionesJava/app/src/main/res/layout/activity_speciality_register.xml" value="0.24547101449275363" />
+        <entry key="..\:/AndroidStudioProjects/ProyectoInvestigacionOperacionesJava/app/src/main/res/layout/activity_treatment_place_register.xml" value="0.24547101449275363" />
         <entry key="..\:/ProyectoJava/ProyectoInvestigacionOperacionesJava/app/src/main/res/drawable/bg_menu.xml" value="0.2265" />
         <entry key="..\:/ProyectoJava/ProyectoInvestigacionOperacionesJava/app/src/main/res/drawable/circle.xml" value="0.2265" />
+        <entry key="..\:/ProyectoJava/ProyectoInvestigacionOperacionesJava/app/src/main/res/drawable/roundstyle.xml" value="0.2095" />
         <entry key="..\:/ProyectoJava/ProyectoInvestigacionOperacionesJava/app/src/main/res/layout/activity_birthdate_register.xml" value="0.22826086956521738" />
         <entry key="..\:/ProyectoJava/ProyectoInvestigacionOperacionesJava/app/src/main/res/layout/activity_direction_register.xml" value="0.22826086956521738" />
         <entry key="..\:/ProyectoJava/ProyectoInvestigacionOperacionesJava/app/src/main/res/layout/activity_doctor_pacient_list.xml" value="0.22826086956521738" />
@@ -18,6 +29,9 @@
         <entry key="..\:/ProyectoJava/ProyectoInvestigacionOperacionesJava/app/src/main/res/layout/activity_patient_medicines_doctor_view.xml" value="0.25416666666666665" />
         <entry key="..\:/ProyectoJava/ProyectoInvestigacionOperacionesJava/app/src/main/res/layout/activity_patient_medicines_patient_view.xml" value="0.25416666666666665" />
         <entry key="..\:/ProyectoJava/ProyectoInvestigacionOperacionesJava/app/src/main/res/layout/activity_speciality_register.xml" value="0.22826086956521738" />
+        <entry key="..\:/ProyectoJava/ProyectoInvestigacionOperacionesJava/app/src/main/res/layout/activity_take_verification.xml" value="0.19791666666666666" />
+        <entry key="..\:/ProyectoJava/ProyectoInvestigacionOperacionesJava/app/src/main/res/layout/activity_take_verification_no_answer.xml" value="0.19791666666666666" />
+        <entry key="..\:/ProyectoJava/ProyectoInvestigacionOperacionesJava/app/src/main/res/layout/activity_take_verification_yes_answer.xml" value="0.19791666666666666" />
         <entry key="..\:/ProyectoJava/ProyectoInvestigacionOperacionesJava/app/src/main/res/layout/activity_treatment_place_register.xml" value="0.22826086956521738" />
         <entry key="..\:/ProyectoJava/ProyectoInvestigacionOperacionesJava/app/src/main/res/layout/activity_typer_register.xml" value="0.22146739130434784" />
       </map>
