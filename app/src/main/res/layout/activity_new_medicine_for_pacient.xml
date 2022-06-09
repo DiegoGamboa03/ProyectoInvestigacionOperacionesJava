@@ -7,6 +7,17 @@
     android:background="#EFFFFD"
     tools:context=".NewMedicineForPacient">
 
+    <Spinner
+        android:id="@+id/spinnerDuration"
+        android:layout_width="335dp"
+        android:layout_height="59dp"
+        android:background="@drawable/roundstyle"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.714" />
+
     <TextView
         android:id="@+id/textViewNewAssignMedicine"
         android:layout_width="338dp"
@@ -80,19 +91,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.923" />
-
-    <EditText
-        android:id="@+id/editTextDurationDate"
-        android:layout_width="335dp"
-        android:layout_height="59dp"
-        android:background="@drawable/roundstyle"
-        android:ems="10"
-        android:inputType="date"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.714" />
 
     <EditText
         android:id="@+id/editTextMedicationTime"

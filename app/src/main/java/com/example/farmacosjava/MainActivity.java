@@ -45,48 +45,48 @@ public class MainActivity extends AppCompatActivity {
         String password = editTextPassword.getText().toString();
 
 
-        if(editTextUsername.getText().toString().equals("d")){
+//        if(editTextUsername.getText().toString().equals("d")){
             Intent intent = new Intent(this, DoctorPacientListActivity.class);
             intent.putExtra("username", username);
             startActivity(intent);
-        }else{
-           Intent intent = new Intent(this, PatientMedicinesPatientView.class);
-            startActivity(intent);
-        }
+//        }else{
+//           Intent intent = new Intent(this, PatientMedicinesPatientView.class);
+//            startActivity(intent);
+//        }
 
-        DocumentReference docRef = db.collection("profesionales").document(username);
-        docRef.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
-            @Override
-            public void onComplete(@NonNull Task<DocumentSnapshot> task) {
-                if (task.isSuccessful()) {
-                    DocumentSnapshot document = task.getResult();
-                    if (document.exists() && document.getString("password").equals(password)) {
-                        Intent intent = new Intent(MainActivity.this, DoctorPacientListActivity.class);
-                        intent.putExtra("username", username);
-                        startActivity(intent);
-                    } else {
-                        DocumentReference docRef2 = db.collection("pacientes").document(username);
-                        docRef.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
-                            @Override
-                            public void onComplete(@NonNull Task<DocumentSnapshot> task) {
-                                if (task.isSuccessful()) {
-                                    DocumentSnapshot document = task.getResult();
-                                    if (document.exists() && document.getString("password").equals(password)) {
-                                        Intent intent = new Intent(MainActivity.this, PatientMedicinesPatientView.class);
-                                        intent.putExtra("username", username);
-                                        startActivity(intent);
-                                    } else {
-                                        Toast.makeText(getApplicationContext(), "Error de usuario o contraseña", Toast.LENGTH_LONG)
-                                                .show();
-                                    }
-                                }
-                            }});
-                        }}
-                        else {
-                    Log.d(TAG, "get failed with ", task.getException());
-                }
-            }
-        });
+//        DocumentReference docRef = db.collection("profesionales").document(username);
+//        docRef.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+//            @Override
+//            public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+//                if (task.isSuccessful()) {
+//                    DocumentSnapshot document = task.getResult();
+//                    if (document.exists() && document.getString("password").equals(password)) {
+//                        Intent intent = new Intent(MainActivity.this, DoctorPacientListActivity.class);
+//                        intent.putExtra("username", username);
+//                        startActivity(intent);
+//                    } else {
+//                        DocumentReference docRef2 = db.collection("pacientes").document(username);
+//                        docRef.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+//                            @Override
+//                            public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+//                                if (task.isSuccessful()) {
+//                                    DocumentSnapshot document = task.getResult();
+//                                    if (document.exists() && document.getString("password").equals(password)) {
+//                                        Intent intent = new Intent(MainActivity.this, PatientMedicinesPatientView.class);
+//                                        intent.putExtra("username", username);
+//                                        startActivity(intent);
+//                                    } else {
+//                                        Toast.makeText(getApplicationContext(), "Error de usuario o contraseña", Toast.LENGTH_LONG)
+//                                                .show();
+//                                    }
+//                                }
+//                            }});
+//                        }}
+//                        else {
+//                    Log.d(TAG, "get failed with ", task.getException());
+//                }
+//            }
+//        });
 //        Toast.makeText(getApplicationContext(), "Remplazar por tu codigo", Toast.LENGTH_LONG)
 //                .show();
     }

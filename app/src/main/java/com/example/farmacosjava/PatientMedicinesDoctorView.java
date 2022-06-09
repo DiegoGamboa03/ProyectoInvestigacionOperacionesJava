@@ -60,7 +60,7 @@ public class PatientMedicinesDoctorView extends AppCompatActivity {
                 if (task.isSuccessful()) {
                     DocumentSnapshot document = task.getResult();
                     if (document.exists()) {
-                        docRef.collection("meds").get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                        docRef.collection("medicamentosRegistrados").get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
                             @Override
                             public void onComplete(@NonNull Task<QuerySnapshot> task2) {
                                 if (task2.isSuccessful()){
@@ -84,7 +84,7 @@ public class PatientMedicinesDoctorView extends AppCompatActivity {
                                             intent.putExtra("username",username);
                                             intent.putExtra("paciente",paciente);
                                             intent.putExtra("med",med);
-                                            startActivity(intent);
+//                                            startActivity(intent);
                                         }
                                     });
                                 }
@@ -108,6 +108,8 @@ public class PatientMedicinesDoctorView extends AppCompatActivity {
         String paciente = intent.getStringExtra("paciente");
 
         intent = new Intent(this, NewMedicineForPacient.class);
+        intent.putExtra("username",username);
+        intent.putExtra("paciente",paciente);
         startActivity(intent);
     }
 }

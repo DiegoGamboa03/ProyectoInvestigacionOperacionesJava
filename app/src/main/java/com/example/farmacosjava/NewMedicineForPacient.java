@@ -8,6 +8,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.Spinner;
@@ -37,6 +38,24 @@ public class NewMedicineForPacient extends AppCompatActivity {
 
         CollectionReference meds = db.collection("medicamentos");
         ArrayList<String> medsArr = new ArrayList<String>();
+
+        CollectionReference freq = db.collection("frecuencia");
+        ArrayList<String> freqArr = new ArrayList<String>();
+
+        freq.get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                if (task.isSuccessful()) {
+                    for (QueryDocumentSnapshot document : task.getResult()) {
+                        freqArr.add(document.getId());
+                    }
+                    Spinner spinner =  (Spinner) findViewById(R.id.spinnerTakeFrecuency);
+                    spinner.setAdapter(new ArrayAdapter<String>(NewMedicineForPacient.this, android.R.layout.simple_spinner_dropdown_item,freqArr));
+                } else {
+                    Log.d(TAG, "Error getting documents: ", task.getException());
+                }
+            }
+        });
 
         meds.get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
             @Override
@@ -104,18 +123,36 @@ public class NewMedicineForPacient extends AppCompatActivity {
                 }
             }
         });
+
+
+        CollectionReference duracion = db.collection("duracion");
+        ArrayList<String> durArr = new ArrayList<String>();
+        duracion.get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                if (task.isSuccessful()) {
+                    for (QueryDocumentSnapshot document : task.getResult()) {
+                        durArr.add(document.getId());
+                    }
+                    Spinner spinner =  (Spinner) findViewById(R.id.spinnerDuration);
+                    spinner.setAdapter(new ArrayAdapter<String>(NewMedicineForPacient.this, android.R.layout.simple_spinner_dropdown_item,durArr));
+                } else {
+                    Log.d(TAG, "Error getting documents: ", task.getException());
+                }
+            }
+        });
     }
 
-    public void clickNextButton(){
+    public void clickNextButton(View view){
         String med = ((Spinner) findViewById(R.id.spinnerMedicine)).getSelectedItem().toString();
         String dose = ((Spinner) findViewById(R.id.spinnerDose)).getSelectedItem().toString();
         String pres = ((Spinner) findViewById(R.id.spinnerPresentation)).getSelectedItem().toString();
         String takefreq = ((Spinner) findViewById(R.id.spinnerTakeFrecuency)).getSelectedItem().toString();
-        String duration = ((EditText) findViewById(R.id.editTextDurationDate)).getText().toString();
+        String duration = ((Spinner) findViewById(R.id.spinnerDuration)).getSelectedItem().toString();
         String medtime = ((EditText) findViewById(R.id.editTextMedicationTime)).getText().toString();
 
         Intent intent = getIntent();
-//        String cedula_prof = intent.getStringExtra("cedula_prof");
+        String username = intent.getStringExtra("username");
         String cedula_pac = intent.getStringExtra("paciente");
 
         Map<String,String> data = new HashMap<>();
@@ -136,5 +173,9 @@ public class NewMedicineForPacient extends AppCompatActivity {
                     }
                 });
 
+        intent = new Intent(this, PatientMedicinesPatientView.class);
+        intent.putExtra("username",username);
+        intent.putExtra("paciente",cedula_pac);
+        startActivity(intent);
     }
 }
