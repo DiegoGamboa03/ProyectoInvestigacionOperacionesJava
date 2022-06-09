@@ -7,6 +7,7 @@ import android.app.NotificationChannel;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.app.Service;
+import android.app.TaskStackBuilder;
 import android.content.Context;
 import android.content.Intent;
 import android.content.res.Resources;
@@ -19,6 +20,8 @@ import androidx.core.app.NotificationCompat;
 
 import com.example.farmacosjava.MainActivity;
 import com.example.farmacosjava.R;
+import com.example.farmacosjava.TakeVerificationActivity;
+import com.example.farmacosjava.registerActivities.nameRegisterActivity;
 
 public class NotificationService extends IntentService {
 
@@ -42,9 +45,10 @@ public class NotificationService extends IntentService {
         String NOTIFICATION_CHANNEL_ID = getApplicationContext().getString(R.string.app_name);
         Context context = this.getApplicationContext();
         notificationManager = (NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);
-        Intent mIntent = new Intent(this, MainActivity.class);
+        Intent mIntent = new Intent(this, TakeVerificationActivity.class);
         Resources res = this.getResources();
         Uri soundUri = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_ALARM);
+
 
         String message = getString(R.string.new_notification);
 
@@ -96,5 +100,7 @@ public class NotificationService extends IntentService {
                     .setContentText(message).build();
             notificationManager.notify(NOTIFICATION_ID, notification);
         }
+
+
     }
 }

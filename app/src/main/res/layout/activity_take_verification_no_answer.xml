@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#EFFFFD"
+    tools:context=".TakeVerificationNoAnswerActivity">
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/buttonNext2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/roundstylebutton"
+        android:backgroundTint="@color/primaryColor"
+        android:onClick="clickNextButton"
+        android:text="Ingresar"
+        android:textColor="@color/white"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.86"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.954" />
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="303dp"
+        android:layout_height="81dp"
+        android:layout_marginTop="64dp"
+        android:text="¿Por que no tomo la medicacion?"
+        android:textColor="@color/primaryColor"
+        android:textSize="34sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <RadioGroup
+        android:id="@+id/RadioGroup"
+        android:layout_width="285dp"
+        android:layout_height="212dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <RadioButton
+            android:id="@+id/radioButton"
+            android:layout_width="279dp"
+            android:layout_height="44dp"
+            android:text="Porque tenia dolor de cabeza" />
+
+        <RadioButton
+            android:id="@+id/radioButton2"
+            android:layout_width="263dp"
+            android:layout_height="40dp"
+            android:text="Porque no tengo la medicacion" />
+
+        <RadioButton
+            android:id="@+id/radioButton3"
+            android:layout_width="275dp"
+            android:layout_height="48dp"
+            android:text="Porque me olvide" />
+    </RadioGroup>
+</androidx.constraintlayout.widget.ConstraintLayout>

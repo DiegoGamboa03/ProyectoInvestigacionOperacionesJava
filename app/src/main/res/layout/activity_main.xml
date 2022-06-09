@@ -13,8 +13,8 @@
         android:id="@+id/circle2"
         android:layout_width="250dp"
         android:layout_height="239dp"
-        android:layout_marginTop="48dp"
-        android:layout_marginEnd="92dp"
+        android:layout_marginTop="4dp"
+        android:layout_marginEnd="84dp"
         android:background="@drawable/circle"
         app:layout_constraintEnd_toStartOf="@+id/circle3"
         app:layout_constraintTop_toTopOf="parent" />
@@ -108,7 +108,7 @@
         android:id="@+id/buttonNext"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="28dp"
+        android:layout_marginBottom="8dp"
         android:background="@drawable/roundstylebutton"
         android:backgroundTint="@color/primaryColor"
         android:onClick="clickNextButton"
@@ -116,7 +116,7 @@
         android:textColor="@color/white"
         app:layout_constraintBottom_toTopOf="@+id/textView_signIn"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.876"
+        app:layout_constraintHorizontal_bias="0.866"
         app:layout_constraintStart_toStartOf="parent" />
 
     <EditText
@@ -132,5 +132,19 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.437"
         app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Friendlypharma"
+        android:textColor="@color/primaryColor"
+        android:textSize="34sp"
+        android:textStyle="bold|italic"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.387" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

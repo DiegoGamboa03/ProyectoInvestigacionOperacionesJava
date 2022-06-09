@@ -50,6 +50,19 @@
         app:layout_constraintVertical_bias="1.0"
         tools:ignore="MissingConstraints">
 
+        <TextView
+            android:id="@+id/textView11"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Medicinas asignadas al paciente"
+            android:textColor="@color/primaryColor"
+            app:layout_constraintBottom_toTopOf="@+id/listViewMedicines"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.142"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.444" />
+
         <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:id="@+id/floatingActionButton3"
             android:layout_width="54dp"
@@ -79,7 +92,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.261" />
+            app:layout_constraintVertical_bias="0.369" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

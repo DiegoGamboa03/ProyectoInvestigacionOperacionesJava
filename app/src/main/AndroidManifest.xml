@@ -19,6 +19,18 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.FarmacosJava">
         <activity
+            android:name=".ReplyActivity"
+            android:exported="false" />
+        <activity
+            android:name=".TakeVerificationYesAnswerActivity"
+            android:exported="false" />
+        <activity
+            android:name=".TakeVerificationNoAnswerActivity"
+            android:exported="false" />
+        <activity
+            android:name=".TakeVerificationActivity"
+            android:exported="false" />
+        <activity
             android:name=".ActivityAlarmTest"
             android:exported="false" />
         <activity

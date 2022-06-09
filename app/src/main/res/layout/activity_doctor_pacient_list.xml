@@ -21,6 +21,20 @@
         app:layout_constraintVertical_bias="1.0"
         tools:ignore="MissingConstraints">
 
+        <TextView
+            android:id="@+id/textView12"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="Pacientes del profesional de la salud"
+            android:textColor="@color/primaryColor"
+            app:layout_constraintBottom_toTopOf="@+id/listViewMedicines"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.143"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.444" />
+
         <ListView
             android:id="@+id/listViewPacients"
             android:layout_width="348dp"
@@ -28,9 +42,10 @@
             android:baselineAligned="false"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.431"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.261" />
+            app:layout_constraintVertical_bias="0.366" />
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:id="@+id/floatingActionButton2"
@@ -44,6 +59,7 @@
             android:onClick="clickFloatingActionButton"
             android:tint="@color/white"
             app:backgroundTint="#42C2FF"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.906"
             app:layout_constraintStart_toStartOf="parent"
@@ -62,7 +78,7 @@
         android:textSize="30sp"
         app:layout_constraintBottom_toTopOf="@+id/textViewDoctorName"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.333"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="1.0" />
@@ -76,7 +92,7 @@
         android:textSize="30sp"
         app:layout_constraintBottom_toTopOf="@+id/textViewWelcomeDoctor"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.054"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="1.0" />
@@ -85,13 +101,13 @@
         android:id="@+id/textViewDoctorName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="36dp"
-        android:text="Nombre del doctor"
+        android:layout_marginBottom="8dp"
+        android:text="Nombre del profesional de la salud"
         android:textColor="#FFFFFF"
         android:textSize="30sp"
         app:layout_constraintBottom_toTopOf="@+id/constraintLayout"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.07"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
