@@ -90,4 +90,10 @@ public class MainActivity extends AppCompatActivity {
 //        Toast.makeText(getApplicationContext(), "Remplazar por tu codigo", Toast.LENGTH_LONG)
 //                .show();
     }
+
+    public void clickTestButton(View view){
+        Intent intent = new Intent(this, ActivityAlarmTest.class);
+        startActivity(intent);
+
+    }
 }

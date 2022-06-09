@@ -1,5 +1,10 @@
 <resources>
     <string name="app_name">FarmacosJava</string>
+    <string name="new_notification">Hora de tomar la medicina</string>
+    <string name="change_time">Cambiar tiempo</string>
+    <string name="time_selected_is">Tiempo seleccionado</string>
+    <string name="changed_to">Cambiado</string>
+    <string name="select_time">Tiempo seleccionado</string>
     <string-array name="UserType">
         <item>Paciente</item>
         <item>Profesional de la salud</item>
